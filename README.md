@@ -6,21 +6,26 @@ Server's URL resolver for Hapi.js
 
 Returns an [URL object](https://www.npmjs.com/package/url) representing the current server's URL:
 
+```javascript
     const HapiUrl = require('hapi-url');
     console.log(HapiUrl(request));
     console.log(HapiUrl(request).format());
     console.log(HapiUrl(request).resolve("/path"));
+```
 
 Or, you can also write as:
 
+```javascript
     const HapiUrl = require('hapi-url');
     console.log(HapiUrl.current(request));
     console.log(HapiUrl.resolve(request, "/path"));
+```
 
 `hapi-url` looks for `x-forwarded-proto` and `x-forwarded-host` to resolve the current URL correctly when behind a reverse proxy. 
 
 If `hapi-url` is not clever enought for your case, you can override the `protocol`, `host` and `basePath`. `basePath` can be used to resolve the URL when the proxy adds a prefix in the path:
 
+```javascript
     const HapiUrl = require('hapi-url');
     Hapi.init({
         protocol: "https",
@@ -28,10 +33,11 @@ If `hapi-url` is not clever enought for your case, you can override the `protoco
         basePath: "/proxy/path/"
     })
     console.log(HapiUrl.format(request));
-
+```
 
 ## Example
 
+```javascript
     const Hapi = require('hapi');
     const HapiUrl = require('hapi-url');
 
@@ -46,3 +52,4 @@ If `hapi-url` is not clever enought for your case, you can override the `protoco
     });
     
     server.start();
+```
