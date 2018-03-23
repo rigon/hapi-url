@@ -128,20 +128,20 @@ Test('custom options and proxied requests', function(t) {
     HapiUrl.init({
         protocol: "https",
         host: "hiddenproxy.example.com",
-        basePath: "/a-prefix"
+        basePath: "/a-prefix/"
     });
 
     return Server().inject({
-        url: '/url',
+        url: '/url/',
         headers: {
-            host: 'example.com',
+            host: 'example.com/',
             'x-forwarded-proto': 'http',
             'x-forwarded-host': 'proxy.example.com'
         }
     })
     .then(function (response) {
         var data = JSON.parse(response.payload);
-        t.equal(data.current, "https://hiddenproxy.example.com/a-prefix/url", 'current url');
+        t.equal(data.current, "https://hiddenproxy.example.com/a-prefix/url/", 'current url');
         t.equal(data.resolve, "https://hiddenproxy.example.com/a-prefix/some/path", 'resolve url');
     });
 });
