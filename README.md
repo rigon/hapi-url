@@ -46,8 +46,8 @@ const server = new Hapi.Server({port: 3000});
 server.route({
     method: 'GET',
     path: '/{path*}', // match some path
-    handler: function(request, reply) {
-        reply(HapiUrl.current(request));    // reply with current URL
+    handler: function(request, h) {
+        h.response(HapiUrl.current(request));    // reply with current URL
     }
 });
 
