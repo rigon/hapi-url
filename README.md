@@ -47,7 +47,7 @@ server.route({
     method: 'GET',
     path: '/{path*}', // match some path
     handler: function(request, h) {
-        h.response(HapiUrl.current(request));    // reply with current URL
+        return h.response(HapiUrl.current(request));    // reply with current URL
     }
 });
 
