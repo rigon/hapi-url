@@ -25,10 +25,10 @@ function first(commaList) {
 }
 
 function currentUrlObject(request) {
-	var url = Object.assign(new Url.Url(), request.url, {
-		protocol: internals.protocol || first(request.headers['x-forwarded-proto']) || request.server.info.protocol,
-		host: internals.host || first(request.headers['x-forwarded-host']) || request.info.host,
-		pathname: concatenateUrl(internals.basePath, request.url.pathname)
+    var url = Object.assign(new Url.Url(), request.url, {
+        protocol: internals.protocol || first(request.headers['x-forwarded-proto']) || request.server.info.protocol,
+        host: internals.host || first(request.headers['x-forwarded-host']) || request.info.host,
+        pathname: concatenateUrl(internals.basePath, request.url.pathname)
     });
     
     // Fix to resolve when a basePath is configured, otherwise it will not be added
@@ -37,7 +37,7 @@ function currentUrlObject(request) {
         return resolveFn.call(url, concatenateUrl(internals.basePath, newUrl));
     }
 
-	return url;
+    return url;
 }
 
 
