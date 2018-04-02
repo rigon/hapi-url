@@ -24,7 +24,7 @@ function first(commaList) {
     return null;
 }
 
-function currentUrlObject(request) {
+function HapiUrl(request) {
     var url = Object.assign(new Url.Url(), request.url, {
         protocol: internals.protocol || first(request.headers['x-forwarded-proto']) || request.server.info.protocol,
         host: internals.host || first(request.headers['x-forwarded-host']) || request.info.host,
@@ -41,7 +41,7 @@ function currentUrlObject(request) {
 }
 
 
-currentUrlObject.init = function(options) {
+HapiUrl.init = function(options) {
     if(options != null && typeof options === "object") {
         if(typeof options.protocol === "string") internals.protocol = options.protocol;
         if(typeof options.host === "string") internals.host = options.host;
@@ -49,11 +49,11 @@ currentUrlObject.init = function(options) {
     }
 }
 
-currentUrlObject.current = function(request) {
-    return currentUrlObject(request).format();
+HapiUrl.current = function(request) {
+    return HapiUrl(request).format();
 }
-currentUrlObject.resolve = function(request, url) {
-    return currentUrlObject(request).resolve(url);
+HapiUrl.resolve = function(request, url) {
+    return HapiUrl(request).resolve(url);
 }
 
-module.exports = currentUrlObject;
+module.exports = HapiUrl;
