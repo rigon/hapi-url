@@ -42,7 +42,7 @@ function currentUrlObject(request) {
 
 
 currentUrlObject.init = function(options) {
-    if(typeof options === "object") {
+    if(options != null && typeof options === "object") {
         if(typeof options.protocol === "string") internals.protocol = options.protocol;
         if(typeof options.host === "string") internals.host = options.host;
         if(typeof options.basePath === "string") internals.basePath = options.basePath;
