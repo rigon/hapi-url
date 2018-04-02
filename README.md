@@ -1,6 +1,6 @@
 # Hapi.js URL resolver
 
-Server's URL resolver for Hapi.js
+URL resolver for [Hapi.js](https://hapijs.com/)
 
 ## How to use
 
