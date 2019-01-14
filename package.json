@@ -4,7 +4,8 @@
   "description": "Server's URL resolver for Hapi.js",
   "main": "index.js",
   "scripts": {
-    "test": "tape tests.js"
+    "test": "tape tests.js",
+    "prepare": "npm test"
   },
   "keywords": [
     "hapi",
